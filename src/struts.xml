@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.action.extension" value=",action,json" />
+
+	<package name="user" namespace="/" extends="struts-default">
+	<!-- User -->
+		<action name="addUser" class="com.hoolang.action.UserAction"
+			method="save">
+			<result name="success" type="redirect">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+			<interceptor-ref name="defaultStack">     
+                <param name="fileUpload.maximumSize">1024000</param>     
+                <param name="fileUpload.allowedTypes">     
+                     image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg ,image/bmp, image/gif, image/x-png,  
+                </param>     
+            </interceptor-ref> 
+		</action>
+		<!-- End User -->
+		<!-- Post -->
+		<action name="addPost" class="com.hoolang.action.PostAction"
+			method="save">
+			<result name="success" type="redirect">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+			<interceptor-ref name="defaultStack">     
+                <param name="fileUpload.maximumSize">5024000</param>     
+                <param name="fileUpload.allowedTypes">     
+                     image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg ,image/bmp, image/gif, image/x-png,  
+                </param>
+            </interceptor-ref> 
+		</action>
+		<!-- End Post -->
+		<!-- Comments -->
+	<action name="addComment" class="com.hoolang.action.CommentsAction"
+		method="save">
+		<result name="success" type="redirect">/success.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+		<!-- End Comments -->
+	</package>
+	
+	<package name="ajax" extends="json-default" namespace="/nsjson">
+	<!-- User -->
+	<action name="addUser" class="com.hoolang.action.UserAction"
+			method="save">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<interceptor-ref name="defaultStack">     
+                <param name="fileUpload.maximumSize">1024000</param>     
+                <param name="fileUpload.allowedTypes">     
+                     image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg ,image/bmp, image/gif, image/x-png,  
+                </param>     
+            </interceptor-ref> 
+	</action>
+	<!-- 根据nickname模糊查询 -->
+		<action name="searchNickname" class="com.hoolang.action.UserAction"
+			method="searchNickname">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+	</action>
+	<action name="updateUser" class="com.hoolang.action.UserAction"
+			method="update">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<interceptor-ref name="defaultStack">     
+                <param name="fileUpload.maximumSize">1024000</param>     
+                <param name="fileUpload.allowedTypes">     
+                     image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg ,image/bmp, image/gif, image/x-png,  
+                </param>     
+            </interceptor-ref> 
+	</action>
+	<!-- 更新头像 -->
+		<action name="updateAvatar" class="com.hoolang.action.UserAction"
+			method="updateAvatar">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<interceptor-ref name="defaultStack">     
+                <param name="fileUpload.maximumSize">1024000</param>     
+                <param name="fileUpload.allowedTypes">     
+                     image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg ,image/bmp, image/gif, image/x-png,  
+                </param>     
+            </interceptor-ref> 
+	</action>
+	<!-- 更新简介 -->
+		<action name="updateText" class="com.hoolang.action.UserAction"
+			method="updateText">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+	</action>
+	
+	<!-- 更新地区 -->
+	<action name="updateLocal" class="com.hoolang.action.UserAction"
+			method="updateLocal">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+	</action>
+	
+	<!-- 更新性别 -->
+	<action name="updateSex" class="com.hoolang.action.UserAction"
+			method="updateSex">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+	</action>
+	
+	<!-- 查询一个用户 -->
+	<action name="selectByName" class="com.hoolang.action.UserAction"
+			method="selectByName">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+	</action>
+	<!-- End User -->
+	<action name="addPost" class="com.hoolang.action.PostAction"
+			method="save">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+			<interceptor-ref name="defaultStack">     
+                <param name="fileUpload.maximumSize">5024000</param>     
+                <param name="fileUpload.allowedTypes">     
+                     image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg ,image/bmp, image/gif, image/x-png,  
+                </param>
+            </interceptor-ref> 
+		</action>
+		<action name="listPosts" class="com.hoolang.action.PostAction"
+			method="listPosts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 最新的show -->
+		<action name="latest_posts" class="com.hoolang.action.PostAction"
+			method="latest_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 旧一点的show -->
+		<action name="older_posts" class="com.hoolang.action.PostAction"
+			method="older_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- ====================排行榜====================== -->
+		<action name="top_latest_posts" class="com.hoolang.action.PostAction"
+			method="top_latest_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 旧一点的show -->
+		<action name="top_older_posts" class="com.hoolang.action.PostAction"
+			method="top_older_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 最新用户发布的数据 -->
+		<action name="top_latest_user_latest_posts" class="com.hoolang.action.PostAction"
+			method="top_latest_user_latest_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 最新用户发布的数据 旧一点的show -->
+		<action name="top_latest_user_older_posts" class="com.hoolang.action.PostAction"
+			method="top_latest_user_older_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 评论最多的数据 -->
+		<action name="top_most_comments_latest_posts" class="com.hoolang.action.PostAction"
+			method="top_most_comments_latest_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 评论最多的数据 旧一点的show -->
+		<action name="top_most_comments_older_posts" class="com.hoolang.action.PostAction"
+			method="top_most_comments_older_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+				<!-- 评论最多的数据 -->
+		<action name="top_most_likes_latest_posts" class="com.hoolang.action.PostAction"
+			method="top_most_likes_latest_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 评论最多的数据 旧一点的show -->
+		<action name="top_most_likes_older_posts" class="com.hoolang.action.PostAction"
+			method="top_most_likes_older_posts">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- ====================排行榜结束====================== -->
+	<!-- Comments -->
+	<action name="addComment" class="com.hoolang.action.CommentsAction"
+		method="save">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+	</action>
+	<action name="listComments" class="com.hoolang.action.CommentsAction"
+		method="findComments">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+	</action>
+		<!-- 最新的show -->
+		<action name="latest_comments" class="com.hoolang.action.CommentsAction"
+			method="latest_comments">
+			<result type="json">
+		<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 旧一点的show -->
+		<action name="older_comments" class="com.hoolang.action.CommentsAction"
+			method="older_comments">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+		</action>
+
+	<!-- End Comments -->
+	<!-- Like -->
+		<action name="addLike" class="com.hoolang.action.LikeAction"
+		method="save">
+			<result type="json">
+				<!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result 注意：root为固定写法，否则不会把result的值返回给客户端 -->
+				<param name="root">result</param>
+			</result>
+	</action>
+	<!-- End Like -->
+	
+	<!-- Version -->
+	<action name="checkVersion" class="com.hoolang.action.VersionAction"
+			method="checkVersion">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+	</action>
+	
+	</package>
+</struts>   

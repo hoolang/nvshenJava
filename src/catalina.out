@@ -1,0 +1,32 @@
+Jul 15, 2015 2:10:07 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/i386:/lib:/usr/lib
+Jul 15, 2015 2:10:08 PM org.apache.coyote.http11.Http11Protocol init
+INFO: Initializing Coyote HTTP/1.1 on http-8080
+Jul 15, 2015 2:10:08 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 4804 ms
+Jul 15, 2015 2:10:08 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Jul 15, 2015 2:10:08 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/6.0.24
+Jul 15, 2015 2:10:09 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor host-manager.xml
+Jul 15, 2015 2:10:09 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml
+Jul 15, 2015 2:10:10 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory sample
+Jul 15, 2015 2:10:10 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory examples
+Jul 15, 2015 2:10:10 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory ROOT
+log4j:WARN No appenders could be found for logger (org.springframework.web.context.ContextLoader).
+log4j:WARN Please initialize the log4j system properly.
+Jul 15, 2015 2:10:37 PM org.apache.coyote.http11.Http11Protocol start
+INFO: Starting Coyote HTTP/1.1 on http-8080
+Jul 15, 2015 2:10:37 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:8009
+Jul 15, 2015 2:10:37 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/80  config=null
+Jul 15, 2015 2:10:37 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 28645 ms
+Hibernate: select user0_.uid as uid1_3_, user0_.city as city2_3_, user0_.email as email3_3_, user0_.icon as icon4_3_, user0_.nickname as nickname5_3_, user0_.password as password6_3_, user0_.province as province7_3_, user0_.registerTime as register8_3_, user0_.sex as sex9_3_, user0_.text as text10_3_, user0_.updateTime as updateT11_3_, user0_.username as usernam12_3_, user0_.verified_type as verifie13_3_ from HL_USER user0_ where user0_.username='iiii'
+Hibernate: select user0_.uid as uid1_3_, user0_.city as city2_3_, user0_.email as email3_3_, user0_.icon as icon4_3_, user0_.nickname as nickname5_3_, user0_.password as password6_3_, user0_.province as province7_3_, user0_.registerTime as register8_3_, user0_.sex as sex9_3_, user0_.text as text10_3_, user0_.updateTime as updateT11_3_, user0_.username as usernam12_3_, user0_.verified_type as verifie13_3_ from HL_USER user0_ where user0_.username='iiii'
